@@ -18,6 +18,10 @@ div.jumbotron {
     margin-right: 30px;
 }
 
+.jumbotron>hr {
+    border-top-color: #76B900 !important;
+}
+
 .menu {
     width: 70%;
     margin-left: auto;
@@ -63,4 +67,21 @@ td {
     border-radius: 3px;
     background-color: #fbb;
     visibility: hidden;
+}
+
+.button {
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 3px;
+    color: white;
+    background-color: #76B900;
+    border-color: #76B900;
+    float: right;
+    margin-right: 195px;
+}
+
+.btn.btn-primary:hover {
+    background-image: linear-gradient(to bottom,#76B900 0,#76B900 100%);
+    border-color: #76B900;
+    background-color: #76B900;
 }
