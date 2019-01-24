@@ -69,19 +69,12 @@ td {
     visibility: hidden;
 }
 
-.button {
+button {
     padding: 5px;
-    margin-right: 5px;
+    margin-right: 195px !important;
     border-radius: 3px;
-    color: white;
+    color: white !important;
     background-color: #76B900;
     border-color: #76B900;
     float: right;
-    margin-right: 195px;
-}
-
-.btn.btn-primary:hover {
-    background-image: linear-gradient(to bottom,#76B900 0,#76B900 100%);
-    border-color: #76B900;
-    background-color: #76B900;
 }
