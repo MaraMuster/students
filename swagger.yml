@@ -1,0 +1,125 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"  # Version of our API
+  title: Mensa-App
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api
+
+# Paths supported by the server application and our endpoints
+paths:
+  /menu:
+    get:
+      operationId: menu.read_all
+      tags:
+        - Menu
+      summary: Read the entire list of menu
+      description: Read the list of menu
+      parameters:
+        - name: length
+          in: query
+          type: integer
+          description: Number of items of menu to get from menu
+          required: false
+        - name: offset
+          in: query
+          type: integer
+          description: Offset from beginning of list where to start gathering menu
+          required: false
+      responses:
+        200:
+          description: Successfully read menu list operation
+          schema:
+            type: array
+            items:
+              properties:
+                meal:
+                  type: string
+                price:
+                  type: string
+                ingredients:
+                  type: string
+                timestamp:
+                  type: string
+
+    get:
+      operationId: counter.read_all
+      tags:
+        - Counter
+      summary: Read the count of chosen menus
+      description: Read the count of chosen menus
+      parameters:
+        - name: price
+          in: path
+          description: price of the food to get the count from
+          type: string
+          required: True
+      responses:
+        200:
+          description: Successfully read the count of chosen menus operation
+          schema:
+            type: array
+            items:
+              properties:
+                meal:
+                  type: string
+                price:
+                  type: string
+                ingredients:
+                  type: string
+                timestamp:
+                  type: string
+    
+    put:
+      operationId: counter.update
+      tags:
+        - Counter
+      summary: Update the count of chosen menus
+      description: Update the count of chosen menus
+      parameters:
+        - name: price
+          in: path
+          description: price of the food to update the count from
+          type: string
+          required: True
+        - name: food
+          in: body
+          schema:
+            type: object
+            properties:
+              meal:
+                type: string
+              price:
+                type: string
+      responses:
+        200:
+          description: Successfully updated the count in menu list
+
+  /menu/{price}:
+    get:
+      operationId: menu.read_one
+      tags:
+        - Menu
+      summary: Read food from the menu list
+      description: Read  food from the menu list
+      parameters:
+        - name: price
+          in: path
+          description: price of the food to get from the list
+          type: string
+          required: True
+      responses:
+        200:
+          description: Successfully read food from menu list operation
+          schema:
+            properties:
+              meal:
+                type: string
+              price:
+                type: string
+              timestamp:
+                type: string
