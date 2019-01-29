@@ -78,3 +78,12 @@ button {
     border-color: #76B900;
     float: right;
 }
+
+#menulist {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 50px;
+    padding-top: 20px;
+    padding-top: 20px;
+    border: 1px solid grey;
+}
