@@ -1,10 +1,14 @@
 from flask import render_template, Flask, redirect, url_for, request
+import json
+import requests
 
+resp = requests.get("http://mensaapp.f4.htw-berlin.de/api/menu")
+mensaMenu = resp.json()
 
 # Create the application instance
 app = Flask(__name__, template_folder="templates")
 
-# Create a URL route in our application for "/"
+# Create a URL route in our application for "/home"
 @app.route('/home')
 def home():
     """
@@ -13,7 +17,7 @@ def home():
 
     :return:        the rendered template 'home.html'
     """
-    return render_template('home.html')
+    return render_template('home.html', menu=mensaMenu)
 
 
 # Route for handling the login page logic on "/"

@@ -26,23 +26,68 @@
         <p class="lead">Hier kannst du in Zukunft dein Essen für die Mensa im Voraus bestellen!</p>
         <hr class="my-4">
     </div>
+
     <div class="menu">
         <table class="table table-hover">
             <caption>Aktuelle Menüs</caption>
             <thead>
                 <tr>
-                    <th>Auswahl</th>
                     <th>Gericht</th>
                     <th>Preis</th>
+                    <th>Auswahl</th>
                 </tr>
+
             </thead>
             <tbody>
             </tbody>
         </table>
     </div>
+    <button id="demo">Menüplan laden</button>
+    <br/>
     <button type="submit">Senden</button>
     <div class="error">
     </div>
+    <br/>
+    <br/>
+
+
+
+    <script>
+
+    document.getElementById("demo").onclick = function() {myFunction()};
+
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Menueplan wurde geladen!";
+
+  $(document).ready(function() {
+
+    $.getJSON("http://mensaapp.f4.htw-berlin.de/api/menu", function (json) {
+        var tr;
+        for (var i = 0; i < json.length; i++) {
+            tr = $('<tr/>');
+            tr.append( json[i].meal + "</td>");
+            tr.append("<td>" + json[i].price + "</td>");
+
+            $('table').append(tr);
+               }
+    });
+});
+
+}
+
+
+
+
+
+
+</script>
+
+<p>Here is the menu: {{ menu }}</p>
+
+
+
+
 </body>
 <script src="/static/js/home.js"></script>
+
 </html>
